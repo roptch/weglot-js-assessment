@@ -1,3 +1,5 @@
+Voir commentaires dans le code de chaque cas et/ou paragraphe "Modifications" après chaque cas :)
+
 1. 
 
 ```js
