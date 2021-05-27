@@ -12,7 +12,6 @@ describe('nominal cases', () => {
       const outputReader = readline.createInterface({ input: fs.createReadStream(path.join(__dirname, '../data/output' + testNb + '.txt')) });
       let output = null;
       for await (const line of outputReader) {
-        // Ugly but calling the iterator manually is probably uglier
         output = line;
         break;
       }
