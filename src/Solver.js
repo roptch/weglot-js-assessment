@@ -2,7 +2,7 @@ const utils = require('./utils');
 const DayTimeRange = require('./DayTimeRange');
 
 module.exports = class Solver {
-  constructor(config) {
+  constructor(config = {}) {
     this._days = config.days || [1, 2, 3, 4, 5];
     this._minTime = utils.strTimeToDate(config.minTime || '08:00');
     this._maxTime = utils.strTimeToDate(config.maxTime || '08:00');

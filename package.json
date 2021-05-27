@@ -6,6 +6,10 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "node src/index.js",
-    "test": "echo 'Not implemented yet';"
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "glob": "^7.1.7",
+    "mocha": "^8.4.0"
   }
 }
