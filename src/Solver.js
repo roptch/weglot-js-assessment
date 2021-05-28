@@ -2,6 +2,14 @@ const utils = require('./utils');
 const DayTimeRange = require('./DayTimeRange');
 
 module.exports = class Solver {
+  /**
+   * Constructor
+   * 
+   * @param {Object} config 
+   * @param {Array.<Number>} config.days List of allowed days
+   * @param {String} config.minTime Start time of a day
+   * @param {String} config.maxTime End time of a day
+   */
   constructor(config = {}) {
     this._days = config.days || [1, 2, 3, 4, 5];
     this._minTime = utils.strTimeToDate(config.minTime || '08:00');
@@ -15,9 +23,14 @@ module.exports = class Solver {
     }
   }
 
+  /**
+   * Loop through all time ranges and check if there are any collisions between them.
+   * Merge them if this is the case
+   * Finally adds the time range into the storage
+   * 
+   * @param {DayTimeRange} timeRange 
+   */
   _storeTimeRange(timeRange) {
-    // Loop through all time ranges and check if there are any collisions between them.
-    // Merge them if this is the case
     for (const index in this._timeRangesByDay[timeRange.day]) {
       const currentTimeRange = this._timeRangesByDay[timeRange.day][index];
 
@@ -71,6 +84,11 @@ module.exports = class Solver {
     }
   }
 
+  /**
+   * Parses inputs and store them
+   * 
+   * @param {String} input Raw input to parse
+   */
   addInput(input) {
     // Input syntax checks and parsing
     const inputSplit = input.split(' ');
@@ -100,6 +118,12 @@ module.exports = class Solver {
     this._storeTimeRange(dayTimeRange);
   }
 
+  /**
+   * Find the earliest time range in which we can organise a meeting
+   * taking into account all the user inputs
+   * 
+   * @returns {DayTimeRange} solution
+   */
   resolve() {
     const
       minTimeRangeEnd = new Date(this._minTime.getTime() + (59 * 60 * 1000)),

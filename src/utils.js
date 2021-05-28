@@ -1,4 +1,11 @@
 module.exports = {
+  /**
+   * Converts a time hh:mm to a Date object
+   * 
+   * @param {String} strTime 
+   * 
+   * @returns {Date}
+   */
   strTimeToDate: strTime => {
     const strTimeSplit = strTime.split(':');
     if (strTimeSplit.length !== 2) {
@@ -33,6 +40,13 @@ module.exports = {
     return ret;
   },
 
+  /**
+   * Adds a leading zero before the number if it is only one digit
+   * 
+   * @param {Number} number 
+   * 
+   * @returns {String} 
+   */
   withLeadingZero: number => {
     return ('0' + number).slice(-2);
   }
