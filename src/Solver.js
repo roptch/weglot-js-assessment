@@ -13,7 +13,7 @@ module.exports = class Solver {
   constructor(config = {}) {
     this._days = config.days || [1, 2, 3, 4, 5];
     this._minTime = utils.strTimeToDate(config.minTime || '08:00');
-    this._maxTime = utils.strTimeToDate(config.maxTime || '08:00');
+    this._maxTime = utils.strTimeToDate(config.maxTime || '17:59');
     this._inputNb = 0;
 
     // Initialize storage

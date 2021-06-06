@@ -3,6 +3,8 @@ const fs = require('fs');
 const readline = require('readline');
 const path = require('path');
 const glob = require('glob');
+
+const config = require('../src/config');
 const Solver = require('../src/Solver');
 
 describe('nominal cases', () => {
@@ -16,7 +18,7 @@ describe('nominal cases', () => {
         break;
       }
 
-      const solver = new Solver();
+      const solver = new Solver(config);
       const inputReader = readline.createInterface({ input: fs.createReadStream(file) });
       for await (const line of inputReader) {
         solver.addInput(line);
